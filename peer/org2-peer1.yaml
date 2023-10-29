@@ -1,0 +1,138 @@
+apiVersion: hlf.kungfusoftware.es/v1alpha1
+kind: FabricPeer
+metadata:
+  creationTimestamp: null
+  name: org2-peer1
+  namespace: org2
+spec:
+  affinity: null
+  couchDBexporter: null
+  couchdb:
+    externalCouchDB: null
+    image: couchdb
+    password: couchdb
+    pullPolicy: ""
+    tag: 3.1.1
+    user: couchdb
+  discovery:
+    period: 60s
+    touchPeriod: 60s
+  dockerSocketPath: ""
+  env: null
+  external_chaincode_builder: false
+  externalBuilders:
+  - name: ccaas_builder
+    path: /opt/hyperledger/ccaas_builder
+    propagateEnvironment:
+    - CHAINCODE_AS_A_SERVICE_BUILDER_CONFIG
+  externalEndpoint: peer1-org2.fabric.chikitsa.io:443
+  fsServer: null
+  gatewayApi:
+    gatewayName: hlf-gateway
+    gatewayNamespace: default
+    port: 443
+  gossip:
+    bootstrap: ""
+    endpoint: ""
+    externalEndpoint: peer1-org2.fabric.chikitsa.io:443
+    orgLeader: false
+    useLeaderElection: true
+  grpcProxy: null
+  hostAliases: null
+  hosts:
+  - peer1-org2.fabric.chikitsa.io
+  image: hyperledger/fabric-peer
+  imagePullPolicy: Always
+  imagePullSecrets: null
+  istio:
+    hosts:
+    - peer1-org2.fabric.chikitsa.io
+    ingressGateway: ingressgateway
+    port: 443
+  logging:
+    cauthdsl: info
+    gossip: info
+    grpc: info
+    ledger: info
+    level: info
+    msp: info
+    peer: info
+    policies: info
+  mspID: Org2MSP
+  replicas: 1
+  resources:
+    chaincode:
+      limits:
+        cpu: "1"
+        memory: 100Mi
+      requests:
+        cpu: 10m
+        memory: 10m
+    couchdb:
+      limits:
+        cpu: "1"
+        memory: 512Mi
+      requests:
+        cpu: 10m
+        memory: 10m
+    couchdbExporter: null
+    peer:
+      limits:
+        cpu: "1"
+        memory: 512Mi
+      requests:
+        cpu: 10m
+        memory: 128Mi
+    proxy: null
+  secret:
+    enrollment:
+      component:
+        cahost: org2-ca.fabric.chikitsa.io
+        caname: ca
+        caport: 443
+        catls:
+          cacert: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUNZRENDQWdhZ0F3SUJBZ0lRSnpFTFVybGRqQUJRb1ZzYW1ub1pRREFLQmdncWhrak9QUVFEQWpCU01STXcKRVFZRFZRUUdFd3BEWVd4cFptOXlibWxoTVFrd0J3WURWUVFIRXdBeENUQUhCZ05WQkFrVEFERVVNQklHQTFVRQpDaE1MU0hsd1pYSnNaV1JuWlhJeER6QU5CZ05WQkFzVEJrWmhZbkpwWXpBZUZ3MHlNekV3TVRrd056RXhNemRhCkZ3MHpNekV3TWpBd056RXhNemRhTUZJeEV6QVJCZ05WQkFZVENrTmhiR2xtYjNKdWFXRXhDVEFIQmdOVkJBY1QKQURFSk1BY0dBMVVFQ1JNQU1SUXdFZ1lEVlFRS0V3dEllWEJsY214bFpHZGxjakVQTUEwR0ExVUVDeE1HUm1GaQpjbWxqTUZrd0V3WUhLb1pJemowQ0FRWUlLb1pJemowREFRY0RRZ0FFZklNT1Z2c2JvRXpKc08yeW14YXEyVXZpClNFekpvditxclZkdjhiVzVDZTIxa3EzZk1IaGxWRjZJeWhzSDFZZWlJZExJMkZ2UThQdWhSN3g0Qm9uRDhhT0IKdlRDQnVqQU9CZ05WSFE4QkFmOEVCQU1DQWFZd0hRWURWUjBsQkJZd0ZBWUlLd1lCQlFVSEF3SUdDQ3NHQVFVRgpCd01CTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3S1FZRFZSME9CQ0lFSU85MmZGdUtEb0hPRHEyL2FKTzZlLzZiCksvUHJhSEpVK2hXMGNjL1BCeWdPTUUwR0ExVWRFUVJHTUVTQ0NXeHZZMkZzYUc5emRJSUhiM0puTWkxallZSU0KYjNKbk1pMWpZUzV2Y21jeWdocHZjbWN5TFdOaExtWmhZbkpwWXk1amFHbHJhWFJ6WVM1cGI0Y0Vmd0FBQVRBSwpCZ2dxaGtqT1BRUURBZ05JQURCRkFpQkF1d1B1UkQ1dGxobDFCYkNrK0VNbFFsTkV2MjMzNnI1RHhUVHhpZndwCmJRSWhBTW5Denk4MVlTSmJobVo3VldKMjcyN203bUJJSmdVOFlzTXZZb1NrR2UxMQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+        enrollid: peer1
+        enrollsecret: peer1pw
+        external: null
+      tls:
+        cahost: org2-ca.fabric.chikitsa.io
+        caname: tlsca
+        caport: 443
+        catls:
+          cacert: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUNZRENDQWdhZ0F3SUJBZ0lRSnpFTFVybGRqQUJRb1ZzYW1ub1pRREFLQmdncWhrak9QUVFEQWpCU01STXcKRVFZRFZRUUdFd3BEWVd4cFptOXlibWxoTVFrd0J3WURWUVFIRXdBeENUQUhCZ05WQkFrVEFERVVNQklHQTFVRQpDaE1MU0hsd1pYSnNaV1JuWlhJeER6QU5CZ05WQkFzVEJrWmhZbkpwWXpBZUZ3MHlNekV3TVRrd056RXhNemRhCkZ3MHpNekV3TWpBd056RXhNemRhTUZJeEV6QVJCZ05WQkFZVENrTmhiR2xtYjNKdWFXRXhDVEFIQmdOVkJBY1QKQURFSk1BY0dBMVVFQ1JNQU1SUXdFZ1lEVlFRS0V3dEllWEJsY214bFpHZGxjakVQTUEwR0ExVUVDeE1HUm1GaQpjbWxqTUZrd0V3WUhLb1pJemowQ0FRWUlLb1pJemowREFRY0RRZ0FFZklNT1Z2c2JvRXpKc08yeW14YXEyVXZpClNFekpvditxclZkdjhiVzVDZTIxa3EzZk1IaGxWRjZJeWhzSDFZZWlJZExJMkZ2UThQdWhSN3g0Qm9uRDhhT0IKdlRDQnVqQU9CZ05WSFE4QkFmOEVCQU1DQWFZd0hRWURWUjBsQkJZd0ZBWUlLd1lCQlFVSEF3SUdDQ3NHQVFVRgpCd01CTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3S1FZRFZSME9CQ0lFSU85MmZGdUtEb0hPRHEyL2FKTzZlLzZiCksvUHJhSEpVK2hXMGNjL1BCeWdPTUUwR0ExVWRFUVJHTUVTQ0NXeHZZMkZzYUc5emRJSUhiM0puTWkxallZSU0KYjNKbk1pMWpZUzV2Y21jeWdocHZjbWN5TFdOaExtWmhZbkpwWXk1amFHbHJhWFJ6WVM1cGI0Y0Vmd0FBQVRBSwpCZ2dxaGtqT1BRUURBZ05JQURCRkFpQkF1d1B1UkQ1dGxobDFCYkNrK0VNbFFsTkV2MjMzNnI1RHhUVHhpZndwCmJRSWhBTW5Denk4MVlTSmJobVo3VldKMjcyN203bUJJSmdVOFlzTXZZb1NrR2UxMQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+        csr:
+          cn: ""
+          hosts:
+          - 127.0.0.1
+          - localhost
+          - 18.60.97.75
+          - 18.61.23.151
+          - 18.61.53.187
+          - org2-peer1
+          - org2-peer1.org2
+          - peer1-org2.fabric.chikitsa.io
+        enrollid: peer1
+        enrollsecret: peer1pw
+        external: null
+  service:
+    type: ClusterIP
+  serviceMonitor: null
+  stateDb: couchdb
+  storage:
+    chaincode:
+      accessMode: ReadWriteOnce
+      size: 5Gi
+      storageClass: fabric-sc
+    couchdb:
+      accessMode: ReadWriteOnce
+      size: 5Gi
+      storageClass: fabric-sc
+    peer:
+      accessMode: ReadWriteOnce
+      size: 10Gi
+      storageClass: fabric-sc
+  tag: 2.5.3
+  tolerations: null
+  updateCertificateTime: null
+

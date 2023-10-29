@@ -1,0 +1,77 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: explorer-config
+  namespace: explorer
+data:
+  network.json: |-
+    {
+    "name": "blockchain-network",
+    "version": "1.0.0",
+    "client": {
+      "tlsEnable": true,
+      "adminCredential": {
+        "id": "exploreradmin",
+        "password": "exploreradminpw"
+      },
+      "enableAuthentication": true,
+      "organization": "Org1MSP",
+      "connection": {
+        "timeout": {
+          "peer": {
+            "endorser": "300"
+          },
+          "orderer": "300"
+        }
+      }
+    },
+    "channels": {
+      "testchannel": {
+        "peers": {
+          "org1-peer1.org1": {}
+        },
+        "connection": {
+          "timeout": {
+            "peer": {
+              "endorser": "6000",
+              "eventHub": "6000",
+              "eventReg": "6000"
+            }
+          }
+        }
+      }
+    },
+    "organizations": {
+      "Org1MSP": {
+        "mspid": "Org1MSP",
+        "adminPrivateKey": {
+          "pem": "-----BEGIN PRIVATE KEY-----\nMIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgRL/rnEiRZO5yUqxs\nYZuA0rqB5v+aY/pGZ2ySMJ+ewBOhRANCAASuw1ciP6MMptOJ0dw8wqWi9YBzd/83\n1bJ+CweS3J0GTnO4vk6jLRDMHdb3GscpTo5a3hgLKkTkznRphp5GjVvH\n-----END PRIVATE KEY-----"
+        },
+        "peers": [
+          "org1-peer1.org1"
+        ],
+        "signedCert": {
+          "pem": "-----BEGIN CERTIFICATE-----\nMIICUjCCAfmgAwIBAgIUC6VKf0OSNvWLWojuhQaPXL4KV44wCgYIKoZIzj0EAwIw\najELMAkGA1UEBhMCRVMxETAPBgNVBAcTCEFsaWNhbnRlMREwDwYDVQQJEwhBbGlj\nYW50ZTEZMBcGA1UEChMQS3VuZyBGdSBTb2Z0d2FyZTENMAsGA1UECxMEVGVjaDEL\nMAkGA1UEAxMCY2EwHhcNMjMxMDE5MDcxMDI4WhcNMjQxMDE5MTAxMDAwWjAgMQ4w\nDAYDVQQLEwVhZG1pbjEOMAwGA1UEAxMFYWRtaW4wWTATBgcqhkjOPQIBBggqhkjO\nPQMBBwNCAASuw1ciP6MMptOJ0dw8wqWi9YBzd/831bJ+CweS3J0GTnO4vk6jLRDM\nHdb3GscpTo5a3hgLKkTkznRphp5GjVvHo4HGMIHDMA4GA1UdDwEB/wQEAwIHgDAM\nBgNVHRMBAf8EAjAAMB0GA1UdDgQWBBRkEEVfKoxKhdaWUPjN/1yJgYwXHTArBgNV\nHSMEJDAigCC6eZpNb/0m+LdS1xKdp4VT2K53Bq0PIc58BUvxdz93bTBXBggqAwQF\nBgcIAQRLeyJhdHRycyI6eyJoZi5BZmZpbGlhdGlvbiI6IiIsImhmLkVucm9sbG1l\nbnRJRCI6ImFkbWluIiwiaGYuVHlwZSI6ImFkbWluIn19MAoGCCqGSM49BAMCA0cA\nMEQCIC8DlA+RD9GXedOicewKZzRsxkbcT1fTOJfebmCXrs81AiAXgfDV0h4C9cNY\nnA1Duol+/+T+8x98j8TJZAo1mBOXaw==\n-----END CERTIFICATE-----"
+        }
+      }
+    },
+    "peers": {
+      "org1-peer1.org1": {
+        "tlsCACerts": {
+            "pem": "-----BEGIN CERTIFICATE-----\nMIICRDCCAeugAwIBAgIQUfs6DWRCJIFOt+THFa8s/DAKBggqhkjOPQQDAjBtMQsw\nCQYDVQQGEwJFUzERMA8GA1UEBxMIQWxpY2FudGUxETAPBgNVBAkTCEFsaWNhbnRl\nMRkwFwYDVQQKExBLdW5nIEZ1IFNvZnR3YXJlMQ0wCwYDVQQLEwRUZWNoMQ4wDAYD\nVQQDEwV0bHNjYTAeFw0yMzEwMTkwNzEwMjhaFw0zMzEwMjAwNzEwMjhaMG0xCzAJ\nBgNVBAYTAkVTMREwDwYDVQQHEwhBbGljYW50ZTERMA8GA1UECRMIQWxpY2FudGUx\nGTAXBgNVBAoTEEt1bmcgRnUgU29mdHdhcmUxDTALBgNVBAsTBFRlY2gxDjAMBgNV\nBAMTBXRsc2NhMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEI+de9BPzy2jvD4lm\nuymCm/I0Fd/UvuUNqccjcO6SuWU+jAuDpakstEooVjXzZce4kzt78x4S1ycAEzRM\n/TWbdqNtMGswDgYDVR0PAQH/BAQDAgGmMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggr\nBgEFBQcDATAPBgNVHRMBAf8EBTADAQH/MCkGA1UdDgQiBCDzSHeHDhR87h2rVOvQ\nhuwF67CcrYWPiE4+d0YUzHcxrjAKBggqhkjOPQQDAgNHADBEAiBix4bCHgHwzgBD\n/yzDmOKXgai8GeoswZPvGiby9UBNzQIgaqZbDbD6yEeI/JV4RVjLBn9uScVjKB3X\nqBSI4Zyjgq0=\n-----END CERTIFICATE-----"
+        },
+        "url": "grpcs://peer1-org1.fabric.chikitsa.io:443"
+      }
+    }
+    }
+
+  config.json: |-
+    {
+    "network-configs": {
+      "blockchain-network": {
+        "name": "blockchain-network",
+        "profile": "./blockchain-network.json"
+      }
+    },
+    "license": "Apache-2.0"
+    }

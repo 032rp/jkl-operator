@@ -1,0 +1,79 @@
+apiVersion: hlf.kungfusoftware.es/v1alpha1
+kind: FabricOrdererNode
+metadata:
+  creationTimestamp: null
+  name: orderer-node1
+  namespace: orderer
+spec:
+  adminGatewayApi:
+    gatewayName: hlf-gateway
+    gatewayNamespace: default
+    port: 443
+  adminIstio:
+    hosts:
+    - orderer1-admin-ord.fabric.chikitsa.io
+    ingressGateway: ingressgateway
+    port: 443
+  affinity: null
+  bootstrapMethod: none
+  channelParticipationEnabled: true
+  env: null
+  gatewayApi:
+    gatewayName: hlf-gateway
+    gatewayNamespace: default
+    port: 443
+  genesis: ""
+  grpcProxy: null
+  hostAliases: null
+  image: hyperledger/fabric-orderer
+  imagePullSecrets: null
+  istio:
+    hosts:
+    - orderer1-ord.fabric.chikitsa.io
+    ingressGateway: ingressgateway
+    port: 443
+  mspID: OrdererMSP
+  pullPolicy: Always
+  replicas: 1
+  resources: {}
+  secret:
+    enrollment:
+      component:
+        cahost: orderer-ca.fabric.chikitsa.io
+        caname: ca
+        caport: 443
+        catls:
+          cacert: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUNiRENDQWhLZ0F3SUJBZ0lRZGJIYzF6SW5GTlRPUzFuRHVMSjMrVEFLQmdncWhrak9QUVFEQWpCU01STXcKRVFZRFZRUUdFd3BEWVd4cFptOXlibWxoTVFrd0J3WURWUVFIRXdBeENUQUhCZ05WQkFrVEFERVVNQklHQTFVRQpDaE1MU0hsd1pYSnNaV1JuWlhJeER6QU5CZ05WQkFzVEJrWmhZbkpwWXpBZUZ3MHlNekV3TVRrd056RXlNVGxhCkZ3MHpNekV3TWpBd056RXlNVGxhTUZJeEV6QVJCZ05WQkFZVENrTmhiR2xtYjNKdWFXRXhDVEFIQmdOVkJBY1QKQURFSk1BY0dBMVVFQ1JNQU1SUXdFZ1lEVlFRS0V3dEllWEJsY214bFpHZGxjakVQTUEwR0ExVUVDeE1HUm1GaQpjbWxqTUZrd0V3WUhLb1pJemowQ0FRWUlLb1pJemowREFRY0RRZ0FFZzNzc0VQRU12U3VKSWV3N2c5K0JmQ3hhCi8yV3p0cU92MnFSaGFneVBmZ0E2OWRYeEEzaWdpWXhCQXFWSndTbTJxS3dIY3UxL2Ruekd6RHJPVkF6d2tLT0IKeVRDQnhqQU9CZ05WSFE4QkFmOEVCQU1DQWFZd0hRWURWUjBsQkJZd0ZBWUlLd1lCQlFVSEF3SUdDQ3NHQVFVRgpCd01CTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3S1FZRFZSME9CQ0lFSUttU0RWTE8yYVcvcWo4eHltS2JDTFZRCkNrTE9peTFzV05aai83VjlJNkE5TUZrR0ExVWRFUVJTTUZDQ0NXeHZZMkZzYUc5emRJSUtiM0prWlhKbGNpMWoKWVlJU2IzSmtaWEpsY2kxallTNXZjbVJsY21WeWdoMXZjbVJsY21WeUxXTmhMbVpoWW5KcFl5NWphR2xyYVhSegpZUzVwYjRjRWZ3QUFBVEFLQmdncWhrak9QUVFEQWdOSUFEQkZBaUJaNHM2VmhRR0luYUh6SDlCdGtIbnhNOXc3CkwyQnlVZis3Q0JlR0lqR3JyQUloQVBkNnUrRnVELzJ5ZXdmNDJrNzFzQWV6aFRSOFlxWkE3WUl6M1p4QU05V1kKLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+        enrollid: orderer1
+        enrollsecret: orderer1pw
+        external: null
+      tls:
+        cahost: orderer-ca.fabric.chikitsa.io
+        caname: tlsca
+        caport: 443
+        catls:
+          cacert: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUNiRENDQWhLZ0F3SUJBZ0lRZGJIYzF6SW5GTlRPUzFuRHVMSjMrVEFLQmdncWhrak9QUVFEQWpCU01STXcKRVFZRFZRUUdFd3BEWVd4cFptOXlibWxoTVFrd0J3WURWUVFIRXdBeENUQUhCZ05WQkFrVEFERVVNQklHQTFVRQpDaE1MU0hsd1pYSnNaV1JuWlhJeER6QU5CZ05WQkFzVEJrWmhZbkpwWXpBZUZ3MHlNekV3TVRrd056RXlNVGxhCkZ3MHpNekV3TWpBd056RXlNVGxhTUZJeEV6QVJCZ05WQkFZVENrTmhiR2xtYjNKdWFXRXhDVEFIQmdOVkJBY1QKQURFSk1BY0dBMVVFQ1JNQU1SUXdFZ1lEVlFRS0V3dEllWEJsY214bFpHZGxjakVQTUEwR0ExVUVDeE1HUm1GaQpjbWxqTUZrd0V3WUhLb1pJemowQ0FRWUlLb1pJemowREFRY0RRZ0FFZzNzc0VQRU12U3VKSWV3N2c5K0JmQ3hhCi8yV3p0cU92MnFSaGFneVBmZ0E2OWRYeEEzaWdpWXhCQXFWSndTbTJxS3dIY3UxL2Ruekd6RHJPVkF6d2tLT0IKeVRDQnhqQU9CZ05WSFE4QkFmOEVCQU1DQWFZd0hRWURWUjBsQkJZd0ZBWUlLd1lCQlFVSEF3SUdDQ3NHQVFVRgpCd01CTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3S1FZRFZSME9CQ0lFSUttU0RWTE8yYVcvcWo4eHltS2JDTFZRCkNrTE9peTFzV05aai83VjlJNkE5TUZrR0ExVWRFUVJTTUZDQ0NXeHZZMkZzYUc5emRJSUtiM0prWlhKbGNpMWoKWVlJU2IzSmtaWEpsY2kxallTNXZjbVJsY21WeWdoMXZjbVJsY21WeUxXTmhMbVpoWW5KcFl5NWphR2xyYVhSegpZUzVwYjRjRWZ3QUFBVEFLQmdncWhrak9QUVFEQWdOSUFEQkZBaUJaNHM2VmhRR0luYUh6SDlCdGtIbnhNOXc3CkwyQnlVZis3Q0JlR0lqR3JyQUloQVBkNnUrRnVELzJ5ZXdmNDJrNzFzQWV6aFRSOFlxWkE3WUl6M1p4QU05V1kKLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+        csr:
+          cn: ""
+          hosts:
+          - 127.0.0.1
+          - localhost
+          - 18.60.97.75
+          - orderer-node1
+          - orderer-node1.orderer
+          - orderer1-ord.fabric.chikitsa.io
+          - orderer1-admin-ord.fabric.chikitsa.io
+        enrollid: orderer1
+        enrollsecret: orderer1pw
+        external: null
+  service:
+    type: ClusterIP
+  serviceMonitor: null
+  storage:
+    accessMode: ReadWriteOnce
+    size: 20Gi
+    storageClass: fabric-sc
+  tag: 2.5.3
+  tolerations: null
+  updateCertificateTime: null
+
